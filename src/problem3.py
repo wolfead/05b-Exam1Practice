@@ -3,10 +3,11 @@ PRACTICE Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Alex Wolfe.
+"""  # done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
+
 
 ###############################################################################
 # Students:
@@ -103,7 +104,12 @@ def run_test_problem3a():
     # Below this comment (or integrated with one of the above tests,
     # your choice), add 1 more test case of your own choosing.
     # -------------------------------------------------------------------------
-
+    point = rg.Point(10,50)
+    expected = 25
+    answer = problem3a(window3, point, 4)
+    print()
+    print('Test 4 expected' , expected)
+    print('    actual', answer)
 
 def problem3a(window, point, n):
     """
@@ -146,6 +152,29 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # -------------------------------------------------------------------------
+
+
+    line = rg.Line(point,rg.Point(point.x,point.y + 50))
+    x = 1
+    line.thickness = x
+    line.attach_to(window)
+    window.render()
+
+    for k in range(n+1):
+        point.x = point.x + 20
+        point.y = point.y + 10
+        line = rg.Line(point,rg.Point(point.x,point.y + 50))
+        if x <= 11:
+            x = x + 2
+            line.thickness = x
+            print(x)
+        else:
+            line.thickness = x
+        line.attach_to(window)
+
+    window.render()
+
+
 
 
 def run_test_problem3b():
